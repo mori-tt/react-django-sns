@@ -7,7 +7,7 @@ class FriendsFilter(serializers.PrimaryKeyRelatedField):
 
     def get_queryset(self):
         request = self.context['request']
-        friends = FriendRequest.objects.filter(Q(adkTo=request.user) & Q(approved=True))
+        friends = FriendRequest.objects.filter(Q(askTo=request.user) & Q(approved=True))
 
         list_friend=[]
         for friend in friends:
@@ -18,7 +18,7 @@ class FriendsFilter(serializers.PrimaryKeyRelatedField):
 
 class MessageSerializer(serializers.ModelSerializer):
 
-    recever = FriendsFilter()
+    receiver = FriendsFilter()
     
     class Meta:
         model = Message

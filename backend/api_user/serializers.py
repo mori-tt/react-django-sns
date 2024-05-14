@@ -4,10 +4,9 @@ from rest_framework.authtoken.models import Token
 from core.models import Profile, FriendRequest
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = get_user_model()
-        fielda = ('id', 'email', 'password')
+        fields = ('id', 'email', 'password')
         extra_kwargs = {'password': { 'write_only': True}}
 
     def create(self, validated_data):
@@ -20,7 +19,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     created_on = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
     class Meta:
         model=Profile
-        fields = ('id', 'nickname', 'userPro', 'created_on', 'img')
+        fields = ('id', 'nickName', 'userPro', 'created_on', 'img')
         extra_kwargs = {'userPro': {'read_only': True}}
 
 class FriendRequestSerializer(serializers.ModelSerializer):
