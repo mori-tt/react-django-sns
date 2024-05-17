@@ -227,7 +227,7 @@ const ApiContextProvider = (props) => {
 
   return (
     <ApiContext.Provider
-      calue={{
+      value={{
         profile,
         profiles,
         cover,
