@@ -87,4 +87,5 @@ yarn-debug.log*
 yarn-error.log*
 
 ### Others ###
-*.bak
+*.baknode_modules/
+frontend/node_modules/.cache/
