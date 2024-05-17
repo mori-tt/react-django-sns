@@ -17,6 +17,8 @@ db.sqlite3
 /node_modules/
 /build/
 *.map
+node_modules/
+frontend/node_modules/.cache/
 
 ### Node ###
 npm-debug.log*
@@ -88,6 +90,8 @@ yarn-error.log*
 
 ### Others ###
 *.baknode_modules/
+frontend/node_modules/.cache/
+node_modules/
 frontend/node_modules/.cache/
 node_modules/
 frontend/node_modules/.cache/
