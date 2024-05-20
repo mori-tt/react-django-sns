@@ -126,7 +126,7 @@ const ApiContextProvider = (props) => {
     cover.name && editData.append("img", cover, cover.name);
     try {
       const res = await axios.put(
-        `http://localhost:8000/api/user/profile/${profile.id}`,
+        `http://localhost:8000/api/user/profile/${profile.id}/`,
         editData,
         {
           headers: {
@@ -175,7 +175,7 @@ const ApiContextProvider = (props) => {
   const changeApprovalRequest = async (uploadDataAsk, ask) => {
     try {
       const res = await axios.put(
-        `http://localhost:8000/api/user/approval/${ask.id}`,
+        `http://localhost:8000/api/user/approval/${ask.id}/`,
         uploadDataAsk,
         {
           headers: {
@@ -211,7 +211,7 @@ const ApiContextProvider = (props) => {
             }
           )
         : await axios.put(
-            `http://localhost:8000/api/user/approval/${resp[0].id}`,
+            `http://localhost:8000/api/user/approval/${resp[0].id}/`,
             newDataAskPut,
             {
               headers: {

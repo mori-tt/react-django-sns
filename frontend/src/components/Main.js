@@ -4,6 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import { GoMail } from "react-icons/go";
 import { BsFillPeopleFill } from "react-icons/bs";
 import Profile from "./Profile";
+import ProfileManager from "./ProfileManager";
+import Ask from "./Ask";
 
 const Main = () => {
   const { profiles, profile, askList, askListFull, inbox } =
@@ -19,23 +21,41 @@ const Main = () => {
         profileData={filprof}
         askData={askListFull.filter((ask) => {
           return (
-            filprof.userPro === ask.askFrom || filprof.userPro === ask.askTo
+            (filprof.userPro === ask.askFrom) | (filprof.userPro === ask.askTo)
           );
         })}
       />
     ));
+
   return (
     <Grid container>
       <Grid item xs={4}>
         <div className="app-profiles">{listProfiles}</div>
       </Grid>
       <Grid item xs={4}>
-        <div className="app-details"></div>
+        <div className="app-details">
+          <ProfileManager />
+        </div>
         <h3 className="title-ask">
           <BsFillPeopleFill className="badge" />
           Approval request list
         </h3>
-        <div className="app-details"></div>
+        <div className="app-details">
+          <div className="task-list">
+            <ul>
+              {profile.id &&
+                askList.map((ask) => (
+                  <Ask
+                    key={ask.id}
+                    ask={ask}
+                    prof={profiles.filter((item) => {
+                      return item.userPro === ask.askFrom;
+                    })}
+                  />
+                ))}
+            </ul>
+          </div>
+        </div>
       </Grid>
       <Grid item xs={4}>
         <h3>
