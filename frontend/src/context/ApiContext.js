@@ -83,7 +83,7 @@ const ApiContextProvider = (props) => {
     cover.name && createData.append("img", cover, cover.name);
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/user/profile",
+        "http://localhost:8000/api/user/profile/",
         createData,
         {
           headers: {
@@ -161,7 +161,7 @@ const ApiContextProvider = (props) => {
 
   const sendDMCont = async (uploadDM) => {
     try {
-      await axios.post("http://localhost:8000/api/dm/message", uploadDM, {
+      await axios.post("http://localhost:8000/api/dm/message/", uploadDM, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
@@ -196,12 +196,12 @@ const ApiContextProvider = (props) => {
       newDataAskPut.append("approved", true);
 
       const resp = askListFull.filter((item) => {
-        return item.askFrom === profile.userPro && item.askTo == ask.askFrom;
+        return item.askFrom === profile.userPro && item.askTo === ask.askFrom;
       });
 
       !resp[0]
         ? await axios.post(
-            `http://localhost:8000/api/user/approval`,
+            `http://localhost:8000/api/user/approval/`,
             newDataAsk,
             {
               headers: {

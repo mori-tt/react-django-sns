@@ -66,9 +66,9 @@ const Ask = ({ ask, prof }) => {
             Approve
           </Button>
         ) : (
-          <Button className="mail" onClick={() => setModalIsOpen(true)}>
+          <button className="mail" onClick={() => setModalIsOpen(true)}>
             <RiMailAddLine />
-          </Button>
+          </button>
         )}
         <Modal
           isOpen={modalIsOpen}

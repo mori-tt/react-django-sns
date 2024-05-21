@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-// import { ApiContext } from "../context/ApiContext";
+import { ApiContext } from "../context/ApiContext";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = (props) => {
   const classes = useStyles();
+  const { askList, profiles } = useContext(ApiContext);
   const Logout = () => (event) => {
     props.cookies.remove("current-token");
     window.location.href = "/";
@@ -33,7 +34,16 @@ const Navbar = (props) => {
           </Typography>
           <Badge
             className={classes.bg}
-            badgeContent={3}
+            badgeContent={
+              askList.filter((ask) => {
+                return (
+                  ask.approved === false &&
+                  profiles.filter((item) => {
+                    return item.userPro === ask.askFrom;
+                  })
+                );
+              }).length
+            }
             color="secondary"
             overlap="rectangular"
           >

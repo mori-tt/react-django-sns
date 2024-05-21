@@ -72,7 +72,7 @@ const ProfileManager = () => {
           <img src={profile.img} alt="profile" className="profile-image" />
         ) : (
           <img
-            src="http://localhost:8000/_media/image/null.png"
+            src="http://localhost:8000/media/image/null.png"
             alt="profile"
             className="profile-image"
           />
